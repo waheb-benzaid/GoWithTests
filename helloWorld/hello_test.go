@@ -2,11 +2,36 @@ package main
 
 import "testing"
 
-func TestHello(t *testing.T)  {
-	got := Hello("Firas")
-	want := "Hello, Firas"
+func TestHello(t *testing.T) {
+	t.Run("saying hello to people", func(t *testing.T) {
+		got := Hello("Chris","")
+		want := "Hello, Chris"
+		assertCorrectMessage(t, got, want)
+	})
 
+	t.Run("empty string defaults to 'world'", func(t *testing.T) {
+		got := Hello("","")
+		want := "Hello, World"
+		assertCorrectMessage(t, got, want)
+	})
+
+	t.Run("Default language is Spanish",func(t *testing.T) {
+		got := Hello("Firas","Spanish")
+		want := "Hola, Firas"
+		assertCorrectMessage(t, got, want)
+	})
+
+	t.Run("Default language is Frensh",func(t *testing.T) {
+		got := Hello("Firas","French")
+		want := "Bonjour, Firas"
+
+		assertCorrectMessage(t, got, want)
+	})
+}
+
+func assertCorrectMessage(t testing.TB, got, want string) {
+	t.Helper()
 	if got != want {
-		t.Errorf("got %q and want %q",got,want)
+		t.Errorf("got %q want %q", got, want)
 	}
 }
