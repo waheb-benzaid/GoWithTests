@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-func Add_test(t *testing.T)  {
+func TestAdd(t *testing.T)  {
 	sum := Add(2,3)
 	expected:= 5
 
