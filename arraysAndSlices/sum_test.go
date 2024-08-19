@@ -1,6 +1,9 @@
 package main
 
-import "testing"
+import (
+	"slices"
+	"testing"
+)
 
 func TestSum(t *testing.T)  {
 	
@@ -24,4 +27,17 @@ func TestSum(t *testing.T)  {
 			t.Errorf("got %d want %d given, %v", got, want, numbers)
 		}
 	})
+}
+
+func TestSumAll(t *testing.T)  {
+	got := SumAll([] int {1,2,3}, [] int {1,2,3}, [] int {1,2,3})
+	expected := [] int {6,6,6}
+
+	// if !reflect.DeepEqual(got,expected) {
+	// 	t.Errorf("got %v want %v", got, expected)
+	// }
+
+	if !slices.Equal(got, expected) {
+		t.Errorf("got %v want %v", got, expected)
+	}
 }
